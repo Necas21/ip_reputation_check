@@ -4,7 +4,7 @@ import argparse
 import sys
 import matplotlib.pyplot as plt
 
-API_KEY = '<INSERT YOUR API KEY HERE>'
+API_KEY = 'fbf6f0cbe324034ecf6ba14e0cdf55bcb570d0ebe90dd09ac8e70a3a18287aae3d307ff8d68494d4'
 
 def get_ip_list(filename):
 
@@ -67,7 +67,8 @@ def draw_ip_count(ip_count):
     ax.set_ylabel('Count')
     ax.set_xlabel('IP Address')
     ax.set_title('Number of Connections per IP Address')
-    plt.show()
+    plt.xticks(rotation=90)
+    plt.show(block=False)
     
 
 def draw_stack_chart(ip_count):
