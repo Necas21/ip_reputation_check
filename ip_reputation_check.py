@@ -4,8 +4,10 @@ import argparse
 import sys
 import matplotlib.pyplot as plt
 
-API_KEY = 'fbf6f0cbe324034ecf6ba14e0cdf55bcb570d0ebe90dd09ac8e70a3a18287aae3d307ff8d68494d4'
+# API Key can be created here: https://www.abuseipdb.com/
+API_KEY = '<INSERT API KEY>'
 
+# Loops through a file containing a list of IP addresses and returns a list
 def get_ip_list(filename):
 
     ip_list = []
@@ -20,6 +22,7 @@ def get_ip_list(filename):
     return ip_list
 
 
+# Queries the AbuseIPDB API for an IPs reputation and country
 def get_ip_reputation(ip):
 
     url = 'https://api.abuseipdb.com/api/v2/check'
@@ -42,6 +45,7 @@ def get_ip_reputation(ip):
         print(f'[-] API request for "{ip}" failed!')
 
 
+# Loops through a list of IP addresses and returns a dictionary containing the number of occurences of each IP
 def build_ip_count(ip_list):
     ip_count = {}
     for ip in ip_list:
@@ -53,6 +57,7 @@ def build_ip_count(ip_list):
     return ip_count
 
 
+# Draws a bar chart of the number of occurences of each IP
 def draw_ip_count(ip_count):
     labels = []
     count = []
@@ -71,6 +76,7 @@ def draw_ip_count(ip_count):
     plt.show(block=False)
     
 
+# Creates a dictionary containing the number of 'High' and 'Low' reputation IP addresses and then draws a stacked bar chart
 def draw_stack_chart(ip_count):
     country_dict = {}
     for ip in ip_count.keys():
