@@ -15,6 +15,7 @@ def get_ip_list(filename):
         file = open(filename, 'r')
     except:
         print(f'[-] File "{filename}" does not exist!')
+        exit(0)
 
     for line in file:
         ip_list.append(line.rstrip())
@@ -43,6 +44,7 @@ def get_ip_reputation(ip):
         return country_code, reputation_score
     except:
         print(f'[-] API request for "{ip}" failed!')
+        exit(0)
 
 
 # Loops through a list of IP addresses and returns a dictionary containing the number of occurences of each IP
